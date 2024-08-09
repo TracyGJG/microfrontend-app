@@ -1,0 +1,77 @@
+{
+  "host": {
+    "applicationName": "Microfrontend Host Sampler",
+    "initialScreen": "combination",
+    "logo": "logo.png"
+  },
+  "screens": {
+    "horizontal": {
+      "title": "Horizontal layout",
+      "rows": 3,
+      "cols": 1,
+      "remotes": [
+        {
+          "url": "http://127.0.0.1:5501/remotes/red.html"
+        },
+        {
+          "url": "http://127.0.0.1:5501/remotes/green.html"
+        },
+        {
+          "url": "http://127.0.0.1:5501/remotes/blue.html"
+        },
+        {
+          "url": "http://127.0.0.1:5501/remotes/white.html"
+        }
+      ]
+    },
+    "vertical": {
+      "title": "Vertical layout",
+      "rows": 3,
+      "cols": 6,
+      "areas": ["r r r . . .", "r r r g g .", "r r r g g b"],
+      "remotes": [
+        {
+          "url": "http://127.0.0.1:5501/remotes/red.html",
+          "area": "r"
+        },
+        {
+          "url": "http://127.0.0.1:5501/remotes/green.html",
+          "area": "g"
+        },
+        {
+          "url": "http://127.0.0.1:5501/remotes/blue.html",
+          "area": "b"
+        },
+        {
+          "url": "http://127.0.0.1:5501/remotes/white.html",
+          "area": "1 / 5 / 2 / -1"
+        }
+      ]
+    },
+    "combination": {
+      "title": "Combination Layout",
+      "remotes": [
+        {
+          "url": "http://127.0.0.1:5501/remotes/red.html",
+          "cols": "1/-1",
+          "rows": "1/3"
+        },
+        {
+          "url": "http://127.0.0.1:5501/remotes/green.html",
+          "cols": "1/3",
+          "rows": "3/-1"
+        },
+        {
+          "url": "http://127.0.0.1:5501/remotes/blue.html",
+          "cols": "3/-1",
+          "rows": "3/-1"
+        },
+        {
+          "url": "http://127.0.0.1:5501/remotes/white.html",
+          "cols": "5/-3",
+          "rows": "5/-3"
+        }
+      ]
+    }
+  }
+}

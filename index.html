@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="module" src="host.js" defer></script>
+    <style>
+      :root {
+        --grid-cols: 12;
+        --grid-rows: 8;
+        --grid-gap: 1rem;
+      }
+      body {
+        margin: var(--grid-gap);
+        overflow: hidden;
+        height: calc(100vh - 2 * var(--grid-gap));
+        background-color: #ffff0033;
+        display: grid;
+        grid-template-rows: 4rem 1fr;
+        gap: var(--grid-gap);
+      }
+      h1,
+      h2 {
+        margin: 0;
+      }
+      header {
+        display: grid;
+        grid-template-columns: 4rem 1fr;
+        gap: var(--grid-gap);
+
+        &.no-logo {
+          display: block;
+        }
+      }
+      .no-logo > img {
+        display: none;
+      }
+      main {
+        display: none;
+        grid-template-columns: repeat(var(--grid-cols), 1fr);
+        grid-template-rows: repeat(var(--grid-rows), 1fr);
+        gap: var(--grid-gap);
+
+        &.show {
+          display: grid;
+        }
+      }
+      iframe {
+        width: 100%;
+        height: 100%;
+        border-width: 0;
+        overflow: auto;
+        background-color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="" alt="Application Logo" />
+      <span>
+        <h1>Application Suite Name</h1>
+        <h2>Application (screen) Name</h2>
+      </span>
+    </header>
+  </body>
+</html>
