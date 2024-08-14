@@ -1,0 +1,107 @@
+:root {
+  --grid-cols: 12;
+  --grid-rows: 8;
+  --grid-gap: 1rem;
+}
+body {
+  margin: 0;
+  overflow: hidden;
+  height: calc(100vh - var(--grid-gap));
+  background-color: #ffff0033;
+  display: grid;
+  grid-template-rows: 6rem 1fr;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas:
+    'h h h'
+    'n m a';
+
+  &.DarkMode {
+    background-color: #777700;
+    color: white;
+  }
+}
+h1,
+h2 {
+  margin: 0;
+}
+img {
+  width: 100%;
+  aspect-ratio: 1;
+}
+header {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  gap: var(--grid-gap);
+  margin: var(--grid-gap);
+  grid-area: h;
+
+  &.no-logo {
+    display: block;
+  }
+}
+.no-logo > img {
+  display: none;
+}
+nav {
+  grid-area: n;
+  grid-template-columns: auto 1fr;
+}
+main {
+  grid-area: m;
+}
+aside {
+  grid-area: a;
+  grid-template-columns: 1fr auto;
+}
+nav,
+aside {
+  display: grid;
+
+  & > button {
+    margin: 0 0.5rem;
+  }
+  & > article {
+    display: none;
+    width: 20ch;
+    padding-right: 0.5rem;
+
+    & > div {
+      padding-bottom: 0.5rem;
+    }
+  }
+  &:focus-within > article {
+    display: block;
+
+    & #rngLightDark {
+      width: 32px;
+    }
+
+    & #rngFontSize {
+      width: 90%;
+    }
+  }
+}
+nav > article > button {
+  width: 100%;
+  height: 2rem;
+  margin-bottom: 0.25rem;
+}
+
+section {
+  display: none;
+  grid-template-columns: repeat(var(--grid-cols), 1fr);
+  grid-template-rows: repeat(var(--grid-rows), 1fr);
+  gap: var(--grid-gap);
+  height: 100%;
+
+  &.show {
+    display: grid;
+  }
+}
+iframe {
+  width: 100%;
+  height: 100%;
+  border-width: 0;
+  overflow: auto;
+  background-color: #fff;
+}

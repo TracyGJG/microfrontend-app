@@ -1,5 +1,7 @@
 import config from './bootstrap.json' with { type: "json" };
 
+const userSettings = JSON.parse(window.localStorage.getItem('mfaUserSettings') || `{"rngLightDark": "1", "rngFontSize": "16"}`);
+
 let currentScreen;
 
 document.querySelector('header h1').textContent = config.host.applicationName;
@@ -22,7 +24,7 @@ function showScreen(newScreen = config.host.initialScreen) {
 
   if (!document.querySelector(`#${newScreen}`)) {
 
-    document.body.insertAdjacentHTML('beforeEnd', `<main id=${newScreen}></main>`)
+    document.querySelector(`main`).insertAdjacentHTML('beforeEnd', `<section id=${newScreen}></section>`)
 
     let gridAreas = '';
     if (newScreenSpec.areas) {
@@ -54,3 +56,43 @@ function showScreen(newScreen = config.host.initialScreen) {
   document.title = `${config.host.applicationName}:${newScreenSpec.title}`;
   document.querySelector(`#${currentScreen}`).classList.add('show');
 }
+
+document.querySelector('nav > article').innerHTML = Object.entries(config.screens).map(([id, screen]) => `<button data-id="${id}">${screen.title}</button>`).join('');
+document.querySelector('nav > article').addEventListener('click', evt => {
+  if (evt.target.tagName === 'BUTTON') {
+    showScreen(evt.target.dataset.id);
+  }
+});
+
+
+const settingsEventHandlers = {
+  'rngFontSize': (value) => {
+    document.body.style.fontSize = `${value}px`;
+  },
+  'rngLightDark': (value) => {   
+    if ((document.body.classList.contains('DarkMode') && (value === "1")) 
+    || (!document.body.classList.contains('DarkMode') && (value === "0"))) {
+      document.body.classList.toggle('DarkMode');
+    }
+  }
+}
+
+Object.entries(userSettings).map(([elementId, value]) => {
+  settingsEventHandlers[elementId](value);
+  document.querySelector(`#${elementId}`).value = value;
+});
+
+function storeUserSettings() {
+  Object.keys(userSettings).map((elementId) => {
+    userSettings[elementId] = document.querySelector(`#${elementId}`).value;
+  });
+  window.localStorage.setItem('mfaUserSettings', JSON.stringify(userSettings));
+}
+
+document.querySelector('aside > article').addEventListener('change', evt => {
+  const eventHandler = settingsEventHandlers[evt.target.id];
+  if (eventHandler) {
+    eventHandler(evt.target.value);
+    storeUserSettings();
+  }
+});

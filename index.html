@@ -5,56 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
     <script type="module" src="host.js" defer></script>
-    <style>
-      :root {
-        --grid-cols: 12;
-        --grid-rows: 8;
-        --grid-gap: 1rem;
-      }
-      body {
-        margin: var(--grid-gap);
-        overflow: hidden;
-        height: calc(100vh - 2 * var(--grid-gap));
-        background-color: #ffff0033;
-        display: grid;
-        grid-template-rows: 4rem 1fr;
-        gap: var(--grid-gap);
-      }
-      h1,
-      h2 {
-        margin: 0;
-      }
-      header {
-        display: grid;
-        grid-template-columns: 4rem 1fr;
-        gap: var(--grid-gap);
-
-        &.no-logo {
-          display: block;
-        }
-      }
-      .no-logo > img {
-        display: none;
-      }
-      main {
-        display: none;
-        grid-template-columns: repeat(var(--grid-cols), 1fr);
-        grid-template-rows: repeat(var(--grid-rows), 1fr);
-        gap: var(--grid-gap);
-
-        &.show {
-          display: grid;
-        }
-      }
-      iframe {
-        width: 100%;
-        height: 100%;
-        border-width: 0;
-        overflow: auto;
-        background-color: #fff;
-      }
-    </style>
   </head>
   <body>
     <header>
@@ -64,5 +16,39 @@
         <h2>Application (screen) Name</h2>
       </span>
     </header>
+    <nav>
+      <article></article>
+      <button type="button">+</button>
+    </nav>
+    <main></main>
+    <aside>
+      <button type="button">+</button>
+      <article>
+        <h2>Settings</h2>
+        <hr />
+        <div>
+          <label for="rngLightDark">Dark</label>
+          <input
+            type="range"
+            id="rngLightDark"
+            min="0"
+            max="1"
+            value="`${userSettings['rngFontSize']}`"
+          />
+          <span>Light</span>
+        </div>
+        <div>
+          <label for="rngFontSize">Font Size (px):</label>
+          <input
+            type="range"
+            id="rngFontSize"
+            min="12"
+            max="24"
+            step="2"
+            value="`${userSettings['rngFontSize']}`"
+          />
+        </div>
+      </article>
+    </aside>
   </body>
 </html>
