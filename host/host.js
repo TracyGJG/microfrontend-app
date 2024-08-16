@@ -15,10 +15,6 @@ else {
 
 showScreen();
 
-document.addEventListener('_changeScreen', e => {
-  showScreen(e.detail);
-});
-
 function showScreen(newScreen = config.host.initialScreen) {
   const newScreenSpec = config.screens[newScreen];
 
@@ -64,6 +60,9 @@ document.querySelector('nav > article').addEventListener('click', evt => {
   }
 });
 
+window.addEventListener('message', ({data}) => {
+  showScreen(data);
+});
 
 const settingsEventHandlers = {
   'rngFontSize': (value) => {

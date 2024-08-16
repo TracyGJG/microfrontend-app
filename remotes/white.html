@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>white</title>
+    <style>
+      body {
+        background-color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Horizontal</button>
+    <button>Vertical</button>
+    <button>Combination</button>
+
+    <script>
+      document.body.addEventListener('click', evt => {
+        if (evt.target.tagName === 'BUTTON') {
+          window.parent.postMessage(evt.target.textContent.toLowerCase(), '*');
+        }
+      });
+    </script>
+  </body>
+</html>
