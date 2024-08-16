@@ -1,0 +1,18 @@
+{
+  "name": "microfrontend-app",
+  "version": "1.0.0",
+  "description": "Sampler micro-frontend application",
+  "main": "index.html",
+  "scripts": {
+    "test": "json-server ./remotes/db.json --static ./remotes --port 5502"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TracyGJG/microfrontend-app"
+  },
+  "author": "Tracy-Gregory Gilmore",
+  "license": "CC-BY-1.0",
+  "devDependencies": {
+    "json-server": "^1.0.0-beta.1"
+  }
+}
